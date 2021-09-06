@@ -13,7 +13,7 @@ PROMPT='%{$fg_bold[green]%}:: [%m] %{$fg[cyan]%}[%~] %{$fg_bold[blue]%}$(git_pro
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%})%{$fg[yellow]%} ✗ %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%})%{$fg[yellow]%}  %{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}) "
 
 ZSH_PROMPT_BASE_COLOR="%{$fg_bold[blue]%}"
