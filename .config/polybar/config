@@ -13,7 +13,7 @@ offset-y = 0
 offset-x =0
 
 border-top-size = 0
-border-bottom-size = 1
+border-bottom-size = 0
 border-right-size = 0
 border-left-size = 0
 
@@ -61,7 +61,7 @@ height = 20
 offset-y = 0
 offset-x =0
 
-border-top-size = 1
+border-top-size = 0
 border-bottom-size = 0
 border-right-size = 0
 border-left-size = 0
@@ -92,7 +92,7 @@ module-margin = 1.5
 
 modules-left = volume backlight battery battery-dos memory cpu
 modules-center = spotify
-modules-right = network wlan
+modules-right = network vpnstatus wlan
 
 tray-position = right
 tray-detached = false
@@ -234,7 +234,7 @@ label-discharging-background = ${color.red}
 label-discharging-foreground = ${color.black}
 label-discharging-padding = 1
 format-full = <ramp-capacity> <label-full>
-label-full-background = ${color.purple}
+label-full-background = ${color.green}
 label-full-foreground = ${color.black}
 label-full-padding = 1
 format-charging =  <label-charging>
@@ -273,7 +273,7 @@ label-discharging-background = ${color.red}
 label-discharging-foreground = ${color.black}
 label-discharging-padding = 1
 format-full = <ramp-capacity> <label-full>
-label-full-background = ${color.purple}
+label-full-background = ${color.green}
 label-full-foreground = ${color.black}
 label-full-padding = 1
 format-charging =  <label-charging>
@@ -408,6 +408,13 @@ format-underline = #1db954
 click-left = playerctl --player=spotify play-pause 
 click-right = playerctl --player=spotify next 
 click-middle = playerctl --player=spotify previous
+
+[module/vpnstatus]
+type = custom/script
+exec = ~/.config/polybar/scripts/vpn.sh
+tail = true
+format-foreground = ${color.green}
+label = %output%
 
 [module/powermenu]
 
