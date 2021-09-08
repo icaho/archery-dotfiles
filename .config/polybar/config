@@ -92,7 +92,7 @@ module-margin = 1.5
 
 modules-left = volume backlight battery battery-dos memory cpu
 modules-center = spotify
-modules-right = network vpnstatus wlan
+modules-right = network networketh vpnstatus wlan ethernet
 
 tray-position = right
 tray-detached = false
@@ -384,12 +384,13 @@ format-disconnected-foreground = ${color.modulefg}
 format-disconnected-padding = 1
 
 
-[module/network]
+[module/networketh]
 type = internal/network
 interface = enp0s25
 label-connected =  %downspeed% |  %upspeed% | %local_ip%
-format-connected-foreground = ${color.modulefg}
-
+format-connected-foreground = ${color.black}
+format-connected-background = ${color.yellow}
+format-connected-padding = 1
 ### wlan ###
 [module/network]
 type = internal/network
