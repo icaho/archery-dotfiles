@@ -370,12 +370,32 @@ format-disconnected-foreground = ${color.modulefg}
 format-disconnected-padding = 1
 
 ### eth ###
+[module/ethernet]
+type = internal/network
+interface = enp0s25
+interval = 5
+label-connected = 
+format-connected-background = ${color.green}
+format-connected-foreground = ${color.black}
+format-connected-padding = 1
+label-disconnected = 
+format-disconnected-background = ${color.red}
+format-disconnected-foreground = ${color.modulefg}
+format-disconnected-padding = 1
+
+
+[module/network]
+type = internal/network
+interface = enp0s25
+label-connected =  %downspeed% |  %upspeed% | %local_ip%
+format-connected-foreground = ${color.modulefg}
+
+### wlan ###
 [module/network]
 type = internal/network
 interface = wlp3s0
 label-connected =  %downspeed% |  %upspeed% | %local_ip%
 format-connected-foreground = ${color.modulefg}
-
 
 ### cpu ###
 [module/cpu]
