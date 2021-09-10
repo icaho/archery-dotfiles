@@ -94,6 +94,12 @@ call plug#begin('~/.config/nvim/plugged')
   " Icons for different file types
   Plug 'ryanoasis/vim-devicons'
 
+" Ctrl Shift F search function
+  Plug 'dyng/ctrlsf.vim'
+
+  " Suda
+  Plug 'lambdalisue/suda.vim'
+
 call plug#end()
 
 " Settings
@@ -196,6 +202,10 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+let g:suda_smart_edit = 1
+let g:suda#prompt = 'Password: ' 
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')

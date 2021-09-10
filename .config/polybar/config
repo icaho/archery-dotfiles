@@ -384,7 +384,7 @@ format-disconnected-foreground = ${color.modulefg}
 format-disconnected-padding = 1
 
 
-[module/network]
+[module/networketh]
 type = internal/network
 interface = enp0s25
 label-connected =  %downspeed% |  %upspeed% | %local_ip%
