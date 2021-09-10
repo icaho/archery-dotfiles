@@ -90,7 +90,7 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = volume backlight battery battery-dos memory cpu
+modules-left = pulseaudio-control backlight battery battery-dos memory cpu
 modules-center = spotify
 modules-right = network networketh vpnstatus wlan ethernet
 
@@ -294,6 +294,24 @@ ramp-capacity-4 = 
 ramp-capacity-4-background = ${color.green}
 
 ### sound ###
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-background = ${color.cyan}
+label-padding = 2
+label-foreground = ${color.black}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+# click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
+
 [module/volume]
 type = internal/alsa
 
@@ -370,24 +388,24 @@ format-disconnected-foreground = ${color.modulefg}
 format-disconnected-padding = 1
 
 ### eth ###
-[module/ethernet]
-type = internal/network
-interface = enp0s25
-interval = 5
-label-connected = 
-format-connected-background = ${color.green}
-format-connected-foreground = ${color.black}
-format-connected-padding = 1
-label-disconnected = 
-format-disconnected-background = ${color.red}
-format-disconnected-foreground = ${color.modulefg}
-format-disconnected-padding = 1
+#[module/ethernet]
+#type = internal/network
+#interface = enp0s25
+#interval = 5
+#label-connected = 
+#format-connected-background = ${color.green}
+#format-connected-foreground = ${color.black}
+#format-connected-padding = 1
+#label-disconnected = 
+#format-disconnected-background = ${color.red}
+#format-disconnected-foreground = ${color.modulefg}
+#format-disconnected-padding = 1
 
 
 [module/networketh]
 type = internal/network
 interface = enp0s25
-label-connected =  %downspeed% |  %upspeed% | %local_ip%
+label-connected =  |  %downspeed% |  %upspeed% | %local_ip%
 format-connected-foreground = ${color.black}
 format-connected-background = ${color.yellow}
 format-connected-padding = 1
