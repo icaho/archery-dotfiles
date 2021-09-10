@@ -77,9 +77,9 @@ bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
-bindsym Print exec "scrot -e 'mv $f ~/Pictures/Screenshots'; sleep 1; exec notify-send 'screenshot has been saved to ~/Pictures/Screenshots'"
-bindsym $mod+Print --release exec "scrot -ue 'mv $f ~/Pictures/Screenshots'; sleep 1; exec notify-send 'screenshot has been saved to ~/Pictures/Screenshots'"
-bindsym $mod+Shift+Print --release exec "notify-send 'selection will be saved to ~/Pictures/Screenshots'; scrot -se 'mv $f~/Pictures/Screenshots'"
+bindsym Print exec "maim -u ~/Pictures/Screenshots/screenshot-m-$(date +%s).png; sleep 1; exec notify-send 'screenshot has been saved to ~/Pictures/Screenshots'"
+bindsym $mod+Print --release exec "maim -u -i $(xdotool getactivewindow) ~/Pictures/Screenshots/screenshot-w-$(date +%s).png; sleep 1; exec notify-send 'screenshot has been saved to ~/Pictures/Screenshots'"
+bindsym $mod+Shift+Print --release exec "maim -su ~/Pictures/Screenshots/screenshot-s-$(date +%s).png; sleep 1; exec notify-send 'screenshot has been saved to ~/Pictures/Screenshots'"
 
 bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Shift+t exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
