@@ -13,7 +13,7 @@ offset-y = 0
 offset-x =0
 
 border-top-size = 0
-border-bottom-size = 0
+border-bottom-size = 1
 border-right-size = 0
 border-left-size = 0
 
@@ -33,7 +33,7 @@ font-1 = "FontAwesome:pixelsize=8;3"
 background = ${color.bground}
 foreground = ${color.white}
 border-color = ${color.fground}
-border-bottom-color = ${color.fground}
+border-bottom-color = ${color.bground}
 ## Miscellaneous ##
 
 fixed-center = true
@@ -61,7 +61,7 @@ height = 20
 offset-y = 0
 offset-x =0
 
-border-top-size = 0
+border-top-size = 1
 border-bottom-size = 0
 border-right-size = 0
 border-left-size = 0
@@ -81,7 +81,7 @@ font-1 = "FontAwesome:pixelsize=8;3"
 
 background = ${color.bground}
 foreground = ${color.fground}
-border-color = ${color.fground}
+border-color = ${color.bground}
 ## Miscellaneous ##
 border-top-color = ${color.fground}
 
@@ -90,9 +90,9 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = pulseaudio-control backlight battery battery-dos memory cpu
+modules-left = pulseaudio-control backlight battery-combined memory cpu
 modules-center = spotify
-modules-right = network networketh vpnstatus wlan ethernet
+modules-right = networketh network vpnstatus wlan ethernet
 
 tray-position = right
 tray-detached = false
@@ -216,6 +216,14 @@ format-foreground = ${color.black}
 format-padding = 1
 
 ### battery ###
+[module/battery-combined]
+type = custom/script
+exec = ~/.config/polybar/scripts/battery-combined-shell.sh
+interval = 10
+label-background = ${color.green}
+label-foreground = ${color.black}
+label-padding = 1
+
 [module/battery]
 type = internal/battery
 
