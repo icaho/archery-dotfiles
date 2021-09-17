@@ -220,8 +220,8 @@ format-padding = 1
 type = custom/script
 exec = ~/.config/polybar/scripts/battery-combined-shell.sh
 interval = 10
-label-background = ${color.green}
-label-foreground = ${color.black}
+label-underline = ${color.green}
+label-foreground = ${color.modulefg}
 label-padding = 1
 
 
