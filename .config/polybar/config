@@ -16,6 +16,7 @@ border-top-size = 0
 border-bottom-size = 0
 border-right-size = 0
 border-left-size = 0
+line-size = 1
 
 ## Location ##
 
@@ -41,9 +42,9 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = i3 
-modules-center = title
-modules-right = date time
+modules-left = title
+modules-center = i3
+modules-right = i3-mode date time
 
 tray-position = none
 tray-detached = true
@@ -65,6 +66,7 @@ border-top-size = 0
 border-bottom-size = 0
 border-right-size = 0
 border-left-size = 0
+line-size = 1
 
 ## Location ##
 
@@ -90,78 +92,34 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = pulseaudio-control backlight battery battery-dos memory cpu
+modules-left = pulseaudio-control backlight memory cpu
 modules-center = spotify
 modules-right = network networketh vpnstatus wlan ethernet
 
 tray-position = right
 tray-detached = false
 
-###########
-# Bar MPD #
-###########
-
-[bar/mpd]
-
-## Dimensions ##
-
-width = 100%
-height = 20
-offset-y = 0
-offset-x = 0
-
-border-top-size = 10
-border-bottom-size = 0
-border-right-size = 10
-border-left-size = 10
-
-## Location ##
-
-bottom = true
-wm-restack = none
-override-redirect = false
-
-## Fonts ##
-
-font-0 = Hack:size=10;3
-font-1 = "FontAwesome:pixelsize=12;3"
-
-## Colours ##
-
-background = #44475a
-foreground = #c5a9f9
-border-color = 0
-
-## Miscelleneous ##
-
-fixed-center = true
-padding-left = 2 
-padding-right = 2
-module-margin = 1.5
-
-;modules-left = 
-modules-center = mpd
-;modules-right = 
 
 #############
 ## Modules ##
 #############
 
+### title ###
 [module/title]
 type = internal/xwindow
 
 format = <label>
-format-background = ${color.orange}
-format-foreground = ${color.black}
+format-overline = ${color.orange}
+format-foreground = ${color.modulefg}
 format-padding = 2
 
 label = %title%
 label-maxlen = 30
 
-;;label-empty = Arch Linux
-;;label-empty-foreground = ${color.}
-;;label-empty-background = ${color.cyan}
-;;label-empty-padding = 2
+#label-empty = Arch Linux
+#label-empty-foreground = ${color.}
+#label-empty-background = ${color.cyan}
+#label-empty-padding = 2
 
 ### i3 ###
 [module/i3]
@@ -175,21 +133,27 @@ enable-scroll = true
 #label-focused-foreground = #c5a9f9
 #label-urgent-foreground = #ff0000
 
-format = <label-state> <label-mode>
+format = <label-state>
 
-label-focused-background = ${color.green}
-label-visible-background = ${color.cyan}
-label-urgent-background = ${color.red}
-label-unfocused-background = ${color.fground}
-label-focused-foreground = ${color.black}
-label-visible-foreground = ${color.black}
+label-focused-overline = ${color.green}
+label-visible-overline = ${color.cyan}
+label-urgent-overline = ${color.red}
+label-unfocused-overline = ${color.bground}
+label-focused-foreground = ${color.green}
+label-visible-foreground = ${color.modulefg}
 label-urgent-foreground = ${color.modulefg}
-label-unfocused-foreground = ${color.white}
+label-unfocused-foreground = ${color.modulefg}
 
 label-focused-padding = 2
 label-urgent-padding = 2
 label-visible-padding = 2
 label-unfocused-padding = 2
+
+## i3 mode menu ##
+[module/i3-mode]
+
+type = internal/i3
+format = <label-mode>
 
 label-mode = %mode%
 label-mode-padding = 2
@@ -202,8 +166,8 @@ type = internal/date
 interval = 1.0
 
 date =  %H:%M
-format-background = ${color.purple}
-format-foreground = ${color.black}
+format-overline = ${color.purple}
+format-foreground = ${color.modulefg}
 format-padding = 1
 
 ### date ###
@@ -211,95 +175,54 @@ format-padding = 1
 type = internal/date
 date =  %e %B - %A
 label = %date%
-format-background = ${color.pink}
-format-foreground = ${color.black}
+format-overline = ${color.pink}
+format-foreground = ${color.modulefg}
 format-padding = 1
 
-### battery ###
-[module/battery]
-type = internal/battery
 
-battery = BAT0
+### backlight ###
+[module/backlight]
+type = internal/backlight
 
-poll-interval = 1
+# Use the following command to list available cards:
+# $ ls -1 /sys/class/backlight/
+card = intel_backlight
 
-full-at = 95
+format = <ramp> <label>
+format-underline = ${color.orange}
+format-foreground = ${color.modulefg}
+format-padding = 1
 
-label-discharging = %percentage%%
-label-charging = %percentage%%
-label-full = %percentage%%
+label = %percentage%%
 
-format-discharging = <ramp-capacity> <label-discharging>
-label-discharging-background = ${color.red}
-label-discharging-foreground = ${color.black}
-label-discharging-padding = 1
-format-full = <ramp-capacity> <label-full>
-label-full-background = ${color.green}
-label-full-foreground = ${color.black}
-label-full-padding = 1
-format-charging =  <label-charging>
-format-charging-background = ${color.green}
-format-charging-foreground = ${color.black}
-format-charging-padding = 1
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 
-ramp-capacity-padding = 1
-ramp-capacity-0 = 
-ramp-capacity-0-background = ${color.red}
-ramp-capacity-1 = 
-ramp-capacity-1-background = ${color.orange}
-ramp-capacity-2 = 
-ramp-capacity-2-background = ${color.yellow}
-ramp-capacity-3 = 
-ramp-capacity-3-background = ${color.cyan}
-ramp-capacity-4 = 
-ramp-capacity-4-background = ${color.green}
+### cpu ###
+[module/cpu]
+type = internal/cpu
+label =  %percentage%%
+format-underline = ${color.pink}
+format-foreground = ${color.modulefg}
+format-padding = 1
 
-### battery-dos ###
-[module/battery-dos]
-type = internal/battery
+### memory ###
+[module/memory]
+type = internal/memory
+label =  %gb_used%
+format-underline = ${color.yellow}
+format-foreground = ${color.modulefg}
+format-padding = 1
 
-battery = BAT1
-
-poll-interval = 1
-
-full-at = 95
-
-label-discharging = %percentage%%
-label-charging = %percentage%%
-label-full = %percentage%%
-
-format-discharging = <ramp-capacity> <label-discharging>
-label-discharging-background = ${color.red}
-label-discharging-foreground = ${color.black}
-label-discharging-padding = 1
-format-full = <ramp-capacity> <label-full>
-label-full-background = ${color.green}
-label-full-foreground = ${color.black}
-label-full-padding = 1
-format-charging =  <label-charging>
-format-charging-background = ${color.green}
-format-charging-foreground = ${color.black}
-format-charging-padding = 1
-
-ramp-capacity-padding = 1
-ramp-capacity-0 = 
-ramp-capacity-0-background = ${color.red}
-ramp-capacity-1 = 
-ramp-capacity-1-background = ${color.orange}
-ramp-capacity-2 = 
-ramp-capacity-2-background = ${color.yellow}
-ramp-capacity-3 = 
-ramp-capacity-3-background = ${color.cyan}
-ramp-capacity-4 = 
-ramp-capacity-4-background = ${color.green}
 
 ### sound ###
 [module/pulseaudio-control]
 type = custom/script
 tail = true
-format-background = ${color.cyan}
+format-underline = ${color.cyan}
 label-padding = 2
-label-foreground = ${color.black}
+label-foreground = ${color.modulefg}
 
 # Icons mixed from Font Awesome 5 and Material Icons
 # You can copy-paste your options for each possible action, which is more
@@ -312,69 +235,29 @@ click-left = pulseaudio-control togmute
 scroll-up = pulseaudio-control --volume-max 130 up
 scroll-down = pulseaudio-control --volume-max 130 down
 
-[module/volume]
-type = internal/alsa
-
-format-volume = <ramp-volume> <label-volume>
-format-volume-background = ${color.cyan}
-format-volume-foreground = ${color.black}
-format-volume-padding = 2
-format-muted =  muted
-format-muted-background = ${color.red}
-format-muted-foreground = ${color.modulefg}
-format-muted-padding = 2
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-
-### mpd ###
-[module/mpd]
-type = internal/mpd
-
-label-offline = mpd is offline
-format-online = <icon-prev> <toggle> <icon-next> <label-song>
-format-offline = <label-offline>
-host = 127.0.0.1
-port = 6600
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-bar-progress-width = 10
-bar-progress-indicator = |
-bar-progress-fill = ─
-bar-progress-empty = ─
-
-### backlight ###
-[module/backlight]
-type = internal/backlight
-
-; Use the following command to list available cards:
-; $ ls -1 /sys/class/backlight/
-card = intel_backlight
-
-format = <ramp> <label>
-format-background = ${color.orange}
-format-foreground = ${color.black}
+### spotify ###
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+format-underline = ${color.purple}
+format-foreground = ${color.modulefg}
 format-padding = 1
+exec = python /usr/bin/polybar-spotify -f '{artist}: {song}'
+# ;control players (optional)
+click-left = playerctl --player=spotify play-pause 
+click-right = playerctl --player=spotify next 
+click-middle = playerctl --player=spotify previous
 
-label = %percentage%%
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+## networking ##
 
 ### wifi ###
 [module/wlan]
 type = internal/network
 
-interface = wlp3s0
+interface = wlp0s20f3
+# interface = wlp3s0
 
 interval = 5
 
@@ -387,21 +270,15 @@ format-disconnected-background = ${color.red}
 format-disconnected-foreground = ${color.modulefg}
 format-disconnected-padding = 1
 
-### eth ###
-#[module/ethernet]
-#type = internal/network
-#interface = enp0s25
-#interval = 5
-#label-connected = 
-#format-connected-background = ${color.green}
-#format-connected-foreground = ${color.black}
-#format-connected-padding = 1
-#label-disconnected = 
-#format-disconnected-background = ${color.red}
-#format-disconnected-foreground = ${color.modulefg}
-#format-disconnected-padding = 1
+### wlan ###
+[module/network]
+type = internal/network
+interface = wlp0s20f3
+# interface = wlp3s0
+label-connected =  %downspeed% |  %upspeed% | %local_ip%
+format-connected-foreground = ${color.modulefg}
 
-
+## ethernet ##
 [module/networketh]
 type = internal/network
 interface = enp0s25
@@ -409,45 +286,8 @@ label-connected =  |  %downspeed% |  %upspeed% | %local_ip%
 format-connected-foreground = ${color.black}
 format-connected-background = ${color.yellow}
 format-connected-padding = 1
-### wlan ###
-[module/network]
-type = internal/network
-interface = wlp3s0
-label-connected =  %downspeed% |  %upspeed% | %local_ip%
-format-connected-foreground = ${color.modulefg}
 
-### cpu ###
-[module/cpu]
-type = internal/cpu
-label =  %percentage%%
-format-background = ${color.pink}
-format-foreground = ${color.black}
-format-padding = 1
-
-### memory ###
-[module/memory]
-type = internal/memory
-label =  %gb_used%
-format-background = ${color.yellow}
-format-foreground = ${color.black}
-format-padding = 1
-
-### spotify ###
-[module/spotify]
-type = custom/script
-interval = 1
-format-prefix = " "
-format = <label>
-format-background = ${color.purple}
-format-foreground = ${color.black}
-format-padding = 1
-exec = python /usr/bin/polybar-spotify -f '{artist}: {song}'
-format-underline = #1db954
-;control players (optional)
-click-left = playerctl --player=spotify play-pause 
-click-right = playerctl --player=spotify next 
-click-middle = playerctl --player=spotify previous
-
+### vpn ###
 [module/vpnstatus]
 type = custom/script
 exec = ~/.config/polybar/scripts/vpn.sh
@@ -455,92 +295,22 @@ tail = true
 format-foreground = ${color.green}
 label = %output%
 
-[module/powermenu]
 
-type = custom/menu
-expand-left = true
-format-spacing = 1
-format-underline = #BF616A
-
-label-open = " Session "
-label-open-background = ${color.red}
-label-open-padding = 2
-label-open-foreground = ${color.white} 
-label-close = " Close"
-label-close-foreground = ${color.yellow}
-label-close-padding = 2
-#label-separator = |
-#label-separator-foreground = ${color.purple}
-
-menu-0-0 = "Reboot"
-menu-0-0-foreground = ${color.black} 
-menu-0-0-background = ${color.pink} 
-menu-0-0-padding = 2
-menu-0-0-exec = menu-open-1
-menu-0-1 = "Power off"
-menu-0-1-foreground = ${color.white} 
-menu-0-1-background = ${color.red} 
-menu-0-1-padding = 2
-menu-0-1-exec = menu-open-2
-menu-0-2 = "Log out"
-menu-0-2-foreground = ${color.black} 
-menu-0-2-background = ${color.cyan} 
-menu-0-2-padding = 2
-menu-0-2-exec = menu-open-3
-
-menu-1-0 = "Reboot"
-menu-1-0-foreground = ${color.black} 
-menu-1-0-background = ${color.pink} 
-menu-1-0-padding = 2
-menu-1-0-exec = systemctl reboot
-menu-1-1 = "Cancel "
-menu-1-1-foreground = ${color.modulefg} 
-menu-1-1-background = ${color.modulefg-alt} 
-menu-1-1-padding = 2
-menu-1-1-exec = menu-open-0
-
-menu-2-0 = "Power off"
-menu-2-0-foreground = ${color.white} 
-menu-2-0-background = ${color.red} 
-menu-2-0-padding = 2
-menu-2-0-exec = systemctl poweroff
-menu-2-1 = "Cancel "
-menu-2-1-foreground = ${color.modulefg} 
-menu-2-1-background = ${color.modulefg-alt} 
-menu-2-1-padding = 2
-menu-2-1-exec = menu-open-0
-
-menu-3-0 = "Log out"
-menu-3-0-foreground = ${color.black} 
-menu-3-0-background = ${color.cyan} 
-menu-3-0-padding = 2
-menu-3-0-exec = i3-msg exit
-menu-3-1 = "Cancel "
-menu-3-1-foreground = ${color.modulefg} 
-menu-3-1-background = ${color.modulefg-alt} 
-menu-3-1-padding = 2
-menu-3-1-exec = menu-open-0
-
-[bar/float]
-
-inherit = bar/juno
-background = #ffffff
-tray-position = center
-
+## colours ##
 [color]
 
-;; Active Colors
+# Active Colors
 bground = #282a36 
 fground = #44475a
 accent = #00897B
 modulefg = #f8f8f2
 modulefg-alt = #6272a4
 
-;; Other
+# Other
 white = #FFFFFF
 black = #000000
 
-;; Dracula Colors
+# Dracula Colors
 red = #ff5555
 pink = #ff79c6
 purple = #bd93f9

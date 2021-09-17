@@ -115,6 +115,7 @@ set number
 set title
 set wrap
 setlocal wrap
+setlocal modifiable
 set encoding=UTF-8
 set guifont=Hack\ Regular\ Nerd\ Font\ Complete\ Mono\ 8
 " persist
