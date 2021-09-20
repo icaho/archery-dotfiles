@@ -47,7 +47,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- $locker --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -241,11 +241,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id autorandr --change && feh --bg-scale --no-fehbg ~/Pictures/Wallpapers/linux-1626872938405-7677.jpg  
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id dunst
 exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 exec_always --no-startup-id "setxkbmap -layout gb"
-#exec --no-startup-id mate-power-manager 
+exec --no-startup-id mate-power-manager 
 #exec --no-startup-id xautolock -time 10 -locker $locker -corners +00- 
 
 #############################
