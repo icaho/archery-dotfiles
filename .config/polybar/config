@@ -42,8 +42,8 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = title
-modules-center = i3
+modules-left = i3
+modules-center = title
 modules-right = i3-mode date time
 
 tray-position = none
@@ -94,7 +94,7 @@ module-margin = 1.5
 
 modules-left = pulseaudio-control backlight battery-combined memory cpu
 modules-center = spotify
-modules-right = networketh network vpnstatus wlan ethernet
+modules-right = network vpnstatus wlan networketh 
 
 tray-position = right
 tray-detached = false
@@ -109,8 +109,8 @@ tray-detached = false
 type = internal/xwindow
 
 format = <label>
-format-overline = ${color.orange}
-format-foreground = ${color.modulefg}
+format-background = ${color.orange}
+format-foreground = ${color.black}
 format-padding = 2
 
 label = %title%
@@ -135,12 +135,12 @@ enable-scroll = true
 
 format = <label-state>
 
-label-focused-overline = ${color.green}
-label-visible-overline = ${color.cyan}
-label-urgent-overline = ${color.red}
-label-unfocused-overline = ${color.bground}
-label-focused-foreground = ${color.green}
-label-visible-foreground = ${color.modulefg}
+label-focused-background = ${color.green}
+label-visible-background = ${color.cyan}
+label-urgent-background = ${color.red}
+label-unfocused-background = ${color.bground}
+label-focused-foreground = ${color.black}
+label-visible-foreground = ${color.black}
 label-urgent-foreground = ${color.modulefg}
 label-unfocused-foreground = ${color.modulefg}
 
@@ -166,8 +166,8 @@ type = internal/date
 interval = 1.0
 
 date =  %H:%M
-format-overline = ${color.purple}
-format-foreground = ${color.modulefg}
+format-background = ${color.purple}
+format-foreground = ${color.black}
 format-padding = 1
 
 ### date ###
@@ -175,8 +175,8 @@ format-padding = 1
 type = internal/date
 date =  %e %B - %A
 label = %date%
-format-overline = ${color.pink}
-format-foreground = ${color.modulefg}
+format-background = ${color.pink}
+format-foreground = ${color.black}
 format-padding = 1
 
 
@@ -189,8 +189,8 @@ type = internal/backlight
 card = intel_backlight
 
 format = <ramp> <label>
-format-underline = ${color.orange}
-format-foreground = ${color.modulefg}
+format-background = ${color.orange}
+format-foreground = ${color.black}
 format-padding = 1
 
 label = %percentage%%
@@ -203,16 +203,16 @@ ramp-2 = 
 [module/cpu]
 type = internal/cpu
 label =  %percentage%%
-format-underline = ${color.pink}
-format-foreground = ${color.modulefg}
+format-background = ${color.pink}
+format-foreground = ${color.black}
 format-padding = 1
 
 ### memory ###
 [module/memory]
 type = internal/memory
 label =  %gb_used%
-format-underline = ${color.yellow}
-format-foreground = ${color.modulefg}
+format-background = ${color.yellow}
+format-foreground = ${color.black}
 format-padding = 1
 
 ### battery ###
@@ -220,8 +220,8 @@ format-padding = 1
 type = custom/script
 exec = ~/.config/polybar/scripts/battery-combined-shell.sh
 interval = 10
-label-underline = ${color.green}
-label-foreground = ${color.modulefg}
+label-background = ${color.green}
+label-foreground = ${color.black}
 label-padding = 1
 
 
@@ -229,9 +229,9 @@ label-padding = 1
 [module/pulseaudio-control]
 type = custom/script
 tail = true
-format-underline = ${color.cyan}
+format-background = ${color.cyan}
 label-padding = 2
-label-foreground = ${color.modulefg}
+label-foreground = ${color.black}
 
 # Icons mixed from Font Awesome 5 and Material Icons
 # You can copy-paste your options for each possible action, which is more
@@ -250,8 +250,8 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-format-underline = ${color.purple}
-format-foreground = ${color.modulefg}
+format-background = ${color.purple}
+format-foreground = ${color.black}
 format-padding = 1
 exec = python /usr/bin/polybar-spotify -f '{artist}: {song}'
 # ;control players (optional)
