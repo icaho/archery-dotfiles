@@ -100,6 +100,9 @@ call plug#begin('~/.config/nvim/plugged')
   " Suda
   Plug 'lambdalisue/suda.vim'
 
+  " Snazzy colorscheme
+  Plug 'connorholyday/vim-snazzy'
+
 call plug#end()
 
 " Settings
@@ -134,7 +137,7 @@ let g:SuperTabMappingBackward = '<tab>'
 
 " Theme
 syntax on
-colorscheme gruvbox
+colorscheme snazzy
 set background=dark
 set cursorline
 set hidden
@@ -145,6 +148,9 @@ set listchars=tab:»·,trail:·
 let g:lightline#bufferline#clickable=1
 let g:lightline#bfferline#shorten_path=1
 let g:lightline#bufferline#min_buffer_count=1
+let g:lightline = {
+\ 'colorscheme': 'snazzy',
+\ }
 
 " Git blamer
 let g:blamer_enabled = 1
