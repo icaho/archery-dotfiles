@@ -57,7 +57,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
@@ -70,7 +70,7 @@ bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -205,7 +205,8 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Escape mode "$mode_system"
+# bindsym $mod+Escape mode "$mode_system"
+bindsym $mod+Escape exec "rofi -show session-menu -modi 'session-menu:~/.local/bin/rofi-power-menu --choices=lockscreen/logout/suspend/reboot/shutdown'" 
 
 
 # resize window (you can also use the mouse for that)
@@ -246,9 +247,9 @@ bindsym $mod+r mode "resize"
 ############################
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/libexec/xfce-polkit
 # exec --no-startup-id nitrogen --restore
-exec_always --no-startup-id autorandr --change && feh --bg-scale --no-fehbg ~/Pictures/Wallpapers/linux-1626872938405-7677.jpg  
+exec_always --no-startup-id autorandr --change && feh --bg-scale --no-fehbg ~/Pictures/Wallpapers/Mountains/wp2532971-night-mountain-wallpapers.jpg 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id dunst
 exec --no-startup-id picom -b --config ~/.config/picom/picom.conf

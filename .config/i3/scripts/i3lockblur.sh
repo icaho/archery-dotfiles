@@ -5,7 +5,7 @@ if [ -f /tmp/screen_locked.png ] ; then
 fi
 
 # Take a screenshot
-scrot /tmp/screen_locked.png
+maim /tmp/screen_locked.png
 
 # Pixellate it 10x
 mogrify -scale 10% -scale 1000% /tmp/screen_locked.png

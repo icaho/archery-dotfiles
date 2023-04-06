@@ -1,0 +1,22 @@
+{
+    "Type": "solar",
+    "Meta": [
+        {
+            "CrossFade": true,
+            "Time": "18:00",
+            "FileName": "dusk.jpg"
+        }, {
+            "CrossFade": true,
+            "Time": "22:00",
+            "FileName": "night.jpg"
+        }, {
+            "CrossFade": true,
+            "Time": "06:00",
+            "FileName": "dawn.jpg"
+        }, {
+            "CrossFade": true,
+            "Time": "10:00",
+            "FileName": "day.jpg"
+        }
+    ]
+}

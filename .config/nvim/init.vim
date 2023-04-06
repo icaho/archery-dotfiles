@@ -103,6 +103,13 @@ call plug#begin('~/.config/nvim/plugged')
   " Snazzy colorscheme
   Plug 'connorholyday/vim-snazzy'
 
+  " Spaceduck colorscheme
+  Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+
+  Plug 'nvim-lualine/lualine.nvim'
+  " If you want to have icons in your statusline choose one of these
+  Plug 'kyazdani42/nvim-web-devicons'
+
 call plug#end()
 
 " Settings
@@ -137,20 +144,29 @@ let g:SuperTabMappingBackward = '<tab>'
 
 " Theme
 syntax on
-colorscheme snazzy
+" colorscheme gruvbox
 set background=dark
 set cursorline
 set hidden
 set list
 set listchars=tab:»·,trail:·
 
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+colorscheme spaceduck
+
 " let buffers be clickable
 let g:lightline#bufferline#clickable=1
 let g:lightline#bfferline#shorten_path=1
 let g:lightline#bufferline#min_buffer_count=1
 let g:lightline = {
-\ 'colorscheme': 'snazzy',
+\ 'colorscheme': 'spaceduck',
 \ }
+
 
 " Git blamer
 let g:blamer_enabled = 1
