@@ -157,14 +157,14 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme spaceduck
+colorscheme snazzy
 
 " let buffers be clickable
 let g:lightline#bufferline#clickable=1
 let g:lightline#bfferline#shorten_path=1
 let g:lightline#bufferline#min_buffer_count=1
 let g:lightline = {
-\ 'colorscheme': 'spaceduck',
+\ 'colorscheme': 'snazzy',
 \ }
 
 
