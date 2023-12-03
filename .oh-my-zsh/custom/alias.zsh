@@ -3,4 +3,9 @@
 # alias vpn-up='nmcli c up lendable-vpn'
 # alias vpn-down='nmcli c down lendable-vpn'
 alias ssh='TERM=xterm ssh'
-export EDITOR=/usr/bin/nvim
+alias ave="aws-vault exec"
+alias av="aws-vault"
+alias avl="aws-vault login"
+alias cls="clear"
+
+alias avd='f() {unset AWS_VAULT && aws-vault exec $1 -d 8h /bin/zsh};f'
