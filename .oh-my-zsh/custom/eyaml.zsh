@@ -1,1 +1,1 @@
-export EYAML_CONFIG=eyaml.config
+# export EYAML_CONFIG=eyaml.config

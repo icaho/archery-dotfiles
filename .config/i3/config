@@ -72,6 +72,9 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
 
+# Rofi bluetooth
+bindsym $mod+b exec --no-startup-id rofi-bluetooth
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
