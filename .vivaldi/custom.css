@@ -1,0 +1,12 @@
+* {
+	font-family: "Montserrat" !important;
+	font-weight: 600;
+}
+
+input.url.vivaldi-addressfield,
+input.url.vivaldi-addressfield:not(:focus),
+input.searchfield-input.vivaldi-searchfield, 
+input.searchfield-input.vivaldi-searchfield:not(:focus) {
+	font-family: "Montserrat" !important;
+	font-weight: 600;
+}
