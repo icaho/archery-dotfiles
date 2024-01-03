@@ -259,7 +259,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id /usr/libexec/xfce-polkit
 # exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id autorandr --change && feh --bg-scale --no-fehbg ~/Pictures/Wallpapers/Mountains/wp2532971-night-mountain-wallpapers.jpg 
-exec --no-startup-id xfce4-power-manager
+exec --no-startup-id mate-power-manager
 exec --no-startup-id dunst
 exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 exec_always --no-startup-id "setxkbmap -layout gb"
